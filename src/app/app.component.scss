@@ -1,0 +1,15 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+.header {
+  width: 100%;
+  height: 60px;
+  margin-bottom: 2rem;
+  background-color: mat.m2-get-color-from-palette(mat.$m2-orange-palette, 500);
+}
+
+.container {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}

@@ -1,0 +1,191 @@
+{
+  "employees": [
+    {
+      "id": "vvv1323",
+      "name": "John Doe",
+      "department": "Engineering",
+      "status": "ACTIVE",
+      "email": "some.email@wp.pl",
+      "equipments": [
+        {
+          "id": "aaa123456",
+          "name": "Macbook air"
+        },
+        {
+          "id": "aaa123456",
+          "name": "Magic Mouse"
+        }
+      ]
+    },
+    {
+      "id": "vvv1324",
+      "name": "Jane Smith",
+      "department": "Engineering",
+      "status": "ACTIVE",
+      "email": "jane.smith@example.com",
+      "equipments": [
+        {
+          "id": "aaa123457",
+          "name": "Macbook Pro"
+        },
+        {
+          "id": "aaa123458",
+          "name": "Magic Keyboard"
+        }
+      ]
+    },
+    {
+      "id": "vvv1325",
+      "name": "Alice Johnson",
+      "department": "Engineering",
+      "status": "ACTIVE",
+      "email": "alice.johnson@example.com",
+      "equipments": [
+        {
+          "id": "aaa123459",
+          "name": "Macbook Air"
+        },
+        {
+          "id": "aaa123460",
+          "name": "Magic Trackpad"
+        }
+      ]
+    },
+    {
+      "id": "vvv1326",
+      "name": "Bob Brown",
+      "department": "Engineering",
+      "status": "ACTIVE",
+      "email": "bob.brown@example.com",
+      "equipments": [
+        {
+          "id": "aaa123461",
+          "name": "Macbook Pro"
+        },
+        {
+          "id": "aaa123462",
+          "name": "Magic Mouse"
+        }
+      ]
+    },
+    {
+      "id": "vvv1327",
+      "name": "Charlie Davis",
+      "department": "Engineering",
+      "status": "ACTIVE",
+      "email": "charlie.davis@example.com",
+      "equipments": [
+        {
+          "id": "aaa123463",
+          "name": "Macbook Air"
+        },
+        {
+          "id": "aaa123464",
+          "name": "Magic Keyboard"
+        }
+      ]
+    },
+    {
+      "id": "vvv1328",
+      "name": "David Evans",
+      "department": "Engineering",
+      "status": "ACTIVE",
+      "email": "david.evans@example.com",
+      "equipments": [
+        {
+          "id": "aaa123465",
+          "name": "Macbook Pro"
+        },
+        {
+          "id": "aaa123466",
+          "name": "Magic Mouse"
+        }
+      ]
+    },
+    {
+      "id": "vvv1329",
+      "name": "Eva Green",
+      "department": "Engineering",
+      "status": "ACTIVE",
+      "email": "eva.green@example.com",
+      "equipments": [
+        {
+          "id": "aaa123467",
+          "name": "Macbook Air"
+        },
+        {
+          "id": "aaa123468",
+          "name": "Magic Keyboard"
+        }
+      ]
+    },
+    {
+      "id": "vvv1330",
+      "name": "Frank Harris",
+      "department": "Engineering",
+      "status": "ACTIVE",
+      "email": "frank.harris@example.com",
+      "equipments": [
+        {
+          "id": "aaa123469",
+          "name": "Macbook Pro"
+        },
+        {
+          "id": "aaa123470",
+          "name": "Magic Trackpad"
+        }
+      ]
+    },
+    {
+      "id": "vvv1331",
+      "name": "Grace Lee",
+      "department": "Engineering",
+      "status": "ACTIVE",
+      "email": "grace.lee@example.com",
+      "equipments": [
+        {
+          "id": "aaa123471",
+          "name": "Macbook Air"
+        },
+        {
+          "id": "aaa123472",
+          "name": "Magic Mouse"
+        }
+      ]
+    },
+    {
+      "id": "vvv1332",
+      "name": "Henry Martin",
+      "department": "Engineering",
+      "status": "ACTIVE",
+      "email": "henry.martin@example.com",
+      "equipments": [
+        {
+          "id": "aaa123473",
+          "name": "Macbook Pro"
+        },
+        {
+          "id": "aaa123474",
+          "name": "Magic Keyboard"
+        }
+      ]
+    },
+    {
+      "id": "vvv1333",
+      "name": "Ivy Nelson",
+      "department": "Engineering",
+      "status": "ACTIVE",
+      "email": "ivy.nelson@example.com",
+      "equipments": [
+        {
+          "id": "aaa123475",
+          "name": "Macbook Air"
+        },
+        {
+          "id": "aaa123476",
+          "name": "Magic Trackpad"
+        }
+      ]
+    }
+  ]
+}
