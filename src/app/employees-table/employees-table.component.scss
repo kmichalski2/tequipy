@@ -1,0 +1,22 @@
+.full-width-table {
+  width: 100%;
+}
+
+.employees-table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1rem;
+
+  &__headline {
+    margin: 0;
+  }
+}
+
+.employees-table-row {
+  cursor: pointer;
+
+  &:hover {
+    background-color: #E1E1E1FF;
+  }
+}

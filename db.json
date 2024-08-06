@@ -21,7 +21,7 @@
       "id": "vvv1324",
       "name": "Jane Smith",
       "department": "Engineering",
-      "status": "ACTIVE",
+      "status": "INACTIVE",
       "email": "jane.smith@example.com",
       "equipments": [
         {
@@ -38,7 +38,7 @@
       "id": "vvv1325",
       "name": "Alice Johnson",
       "department": "Engineering",
-      "status": "ACTIVE",
+      "status": "OFF",
       "email": "alice.johnson@example.com",
       "equipments": [
         {
