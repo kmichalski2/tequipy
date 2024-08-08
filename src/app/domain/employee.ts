@@ -3,11 +3,13 @@ export interface Equipment {
   name: string;
 }
 
+export type Status = 'ACTIVE' | 'OFFBOARDED';
+
 export interface Employee {
   id: string;
   name: string;
   department: string;
-  status: string;
+  status: Status;
   email: string;
   equipments: Equipment[];
 }

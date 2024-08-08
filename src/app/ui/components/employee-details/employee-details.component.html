@@ -1,36 +1,49 @@
-<form *ngIf="employee$ | async as employee" novalidate>
+@if (employee$ | async; as employee) {
   <mat-card class="employee-details-card">
     <mat-card-header class="employee-details-card__header">
       <mat-card-title>{{employee.name}}</mat-card-title>
-      <button mat-raised-button color="primary" type="button" (click)="onOffboardClick(employee)">Offboard</button>
+
+      @if (employee.status !== 'OFFBOARDED') {
+        <button mat-raised-button color="primary" type="button" (click)="onOffboardClick(employee)">Offboard</button>
+      }
     </mat-card-header>
     <mat-card-content>
       <div class="row">
-        <h5>Employee details</h5>
+        <h6 class="mat-title-small">Employee details</h6>
         <mat-divider></mat-divider>
       </div>
 
-      <!-- TODO: Do not use form to display data -->
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
+            <mat-label>Full Name</mat-label>
             <input matInput placeholder="Full Name" [value]="employee.name" readonly>
           </mat-form-field>
         </div>
         <div class="col">
           <mat-form-field class="full-width">
+            <mat-label>E-mail</mat-label>
             <input matInput placeholder="E-mail" [value]="employee.email" readonly>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Department</mat-label>
+            <input matInput placeholder="Department" [value]="employee.department" readonly>
           </mat-form-field>
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Department" [value]="employee.department" readonly>
+            <mat-label>Status</mat-label>
+            <input matInput placeholder="Status" [value]="employee.status" readonly>
           </mat-form-field>
         </div>
       </div>
 
       <div class="row">
-        <h5>Equipment</h5>
+        <h6 class="mat-title-small">Equipment</h6>
         <mat-divider></mat-divider>
       </div>
 
@@ -43,6 +56,9 @@
       </div>
 
     </mat-card-content>
-
   </mat-card>
-</form>
+} @else {
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}
+
+

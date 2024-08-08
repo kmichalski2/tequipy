@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Employee, OffbaordData } from '../domain/employee';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,10 @@ export class EmployeesService {
     }));
   }
 
-  offboard(id: string, data: OffbaordData): Observable<any> {
-    return this.client.post(`${environment.apiUrl}/offboard`, data);
+  offboard(id: string, data: OffbaordData): Observable<boolean> {
+    /**
+     * Here it could be a better endpoint to handle offboarding, but cause I am using mock server I just use patch to update the status
+     */
+    return this.client.patch(`${this.url}/${id}`, { ...data, status: 'OFFBOARDED'}).pipe(map(() => true));
   }
 }

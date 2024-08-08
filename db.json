@@ -17,7 +17,7 @@
       "id": "vvv1324",
       "name": "Jane Smith",
       "department": "Engineering",
-      "status": "INACTIVE",
+      "status": "OFFBOARDED",
       "email": "jane.smith@example.com",
       "equipments": [
         {
@@ -28,13 +28,20 @@
           "id": "aaa123458",
           "name": "Magic Keyboard"
         }
-      ]
+      ],
+      "receiver": "John Smith",
+      "phoneNumber": "123456123",
+      "address": "12312321",
+      "city": "Poland",
+      "postalCode": 12345,
+      "country": "12345",
+      "notes": "12323"
     },
     {
       "id": "vvv1325",
       "name": "Alice Johnson",
       "department": "Engineering",
-      "status": "OFF",
+      "status": "OFFBOARDED",
       "email": "alice.johnson@example.com",
       "equipments": [
         {
@@ -45,7 +52,14 @@
           "id": "aaa123460",
           "name": "Magic Trackpad"
         }
-      ]
+      ],
+      "receiver": "123",
+      "phoneNumber": "123",
+      "address": "123",
+      "city": "123",
+      "postalCode": 21345,
+      "country": "12345",
+      "notes": "123"
     },
     {
       "id": "vvv1326",

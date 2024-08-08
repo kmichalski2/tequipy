@@ -8,7 +8,8 @@
     "mock-server": "json-server --watch db.json --port 3000",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {

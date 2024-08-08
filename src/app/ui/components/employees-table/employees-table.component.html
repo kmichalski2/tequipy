@@ -1,15 +1,11 @@
-<div class="mat-elevation-z2">
-  <header class="employees-table-header">
-    <div>
-      <h1 class="employees-table-header__headline mat-headline-large">Employees</h1>
-    </div>
-    <div>
-      <mat-form-field>
-        <mat-label> Search</mat-label>
-        <input matInput type="text" [(ngModel)]="searchPhrase" (keyup)="onSearchType($event)">
-      </mat-form-field>
-    </div>
-  </header>
+<mat-card>
+  <mat-card-header class="employees-table-header">
+    <mat-card-title>Employees</mat-card-title>
+    <mat-form-field>
+      <mat-label> Search</mat-label>
+      <input matInput type="text" [(ngModel)]="searchPhrase" (keyup)="onSearchType($event)">
+    </mat-form-field>
+  </mat-card-header>
 
   @if ((employees$ | async) === null) {
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
@@ -58,4 +54,4 @@
     [pageSizeOptions]="[5, 10, 20]"
     aria-label="Select page">
   </mat-paginator>
-</div>
+</mat-card>

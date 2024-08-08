@@ -1,6 +1,23 @@
 @use '@angular/material' as mat;
+@use './app/app.component' as app;
+@use './app/ui/components/employees-table/employees-table.component' as employees-table;
+
 
 @include mat.core();
+
+$theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$orange-palette,
+  ),
+));
+
+html {
+  @include mat.core-theme($theme);
+  @include mat.all-component-themes($theme);
+  @include employees-table.theme($theme);
+  @include app.theme($theme);
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -21,4 +38,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .full-width {
   width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  padding-top: 8px;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.col:last-child {
+  margin-right: 0;
 }

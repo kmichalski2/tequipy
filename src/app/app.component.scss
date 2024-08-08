@@ -5,7 +5,13 @@
   width: 100%;
   height: 60px;
   margin-bottom: 2rem;
-  background-color: mat.m2-get-color-from-palette(mat.$m2-orange-palette, 500);
+
+}
+
+@mixin theme ($theme) {
+  .header {
+    background-color: mat.get-theme-color($theme, primary, 50);
+  }
 }
 
 

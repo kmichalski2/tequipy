@@ -11,8 +11,10 @@ import { Router } from '@angular/router';
 import { Observable, of, tap } from 'rxjs';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatProgressBar } from '@angular/material/progress-bar';
-import { EmployeesState } from '../../application/employees.state';
-import { Employee } from '../../domain/employee';
+import { EmployeesState } from '../../../application/employees.state';
+import { Employee } from '../../../domain/employee';
+import { MatCard, MatCardHeader, MatCardTitle } from '@angular/material/card';
+import { AppPages } from '../../../app.routes';
 
 export interface EmployeesTableItem {
   id: string;
@@ -28,7 +30,7 @@ export interface EmployeesTableItem {
   templateUrl: './employees-table.component.html',
   styleUrl: './employees-table.component.scss',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormField, FormsModule, MatInput, MatLabel, NgIf, AsyncPipe, MatProgressSpinner, MatProgressBar]
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormField, FormsModule, MatInput, MatLabel, NgIf, AsyncPipe, MatProgressSpinner, MatProgressBar, MatCard, MatCardHeader, MatCardTitle]
 })
 export class EmployeesTableComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -39,7 +41,8 @@ export class EmployeesTableComponent implements AfterViewInit {
   data: EmployeesTableItem[] = [];
   employees$ = of<EmployeesTableItem[] | null>(null);
 
-  constructor(private employeesState: EmployeesState, private router: Router) {}
+  constructor(private employeesState: EmployeesState, private router: Router) {
+  }
 
   displayedColumns = ['name', 'email', 'department', 'equipment', 'status'];
   searchPhrase = '';
@@ -65,12 +68,12 @@ export class EmployeesTableComponent implements AfterViewInit {
     $event.preventDefault();
 
     this.dataSource.data = this.data.filter(employee => {
-      return employee.name.toLowerCase().includes(this.searchPhrase.toLowerCase());
+      return employee.name.toLowerCase().includes(this.searchPhrase.toLowerCase()) || employee.department.toLowerCase().includes(this.searchPhrase.toLowerCase());
     });
   }
 
   onRowClick(selectedEmployee: EmployeesTableItem) {
-    this.router.navigate(['/employees', selectedEmployee.id]);
+    this.router.navigate([AppPages.Employees, selectedEmployee.id]);
   }
 
   private mapToEmployeesTableItem(employees: Employee[]): EmployeesTableItem[] {

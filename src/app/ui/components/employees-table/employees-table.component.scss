@@ -1,0 +1,17 @@
+@use '@angular/material' as mat;
+
+.employees-table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.employees-table-row {
+  cursor: pointer;
+}
+
+@mixin theme($theme) {
+  .employees-table-row:hover {
+    background-color: mat.get-theme-color($theme, neutral, 96);
+  }
+}

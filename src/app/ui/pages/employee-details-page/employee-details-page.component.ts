@@ -5,7 +5,6 @@ import { MatAnchor } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-employee-details-page',
   standalone: true,
   imports: [
     EmployeeDetailsComponent,
@@ -14,8 +13,6 @@ import { MatIcon } from '@angular/material/icon';
     MatIcon
   ],
   templateUrl: './employee-details-page.component.html',
-  styleUrl: './employee-details-page.component.css'
+  styleUrl: './employee-details-page.component.scss'
 })
-export class EmployeeDetailsPageComponent {
-
-}
+export class EmployeeDetailsPageComponent {}
