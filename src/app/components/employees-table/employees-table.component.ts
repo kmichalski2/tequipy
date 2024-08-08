@@ -3,7 +3,7 @@ import { MatTable, MatTableDataSource, MatTableModule } from '@angular/material/
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { EmployeesTableItem } from './employees-table-datasource';
-import { Employee, EmployeesService } from '../infrastructure/employees.service';
+import { Employee, EmployeesService } from '../../infrastructure/employees.service';
 import { map } from 'rxjs/operators';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
@@ -25,7 +25,8 @@ export class EmployeesTableComponent implements AfterViewInit {
   dataSource = new MatTableDataSource<EmployeesTableItem>([]);
   protected data: EmployeesTableItem[] = [];
 
-  constructor(private employeesService: EmployeesService, private router: Router) {}
+  constructor(private employeesService: EmployeesService, private router: Router) {
+  }
 
   displayedColumns = ['name', 'email', 'department', 'equipment', 'status'];
   searchPhrase = '';

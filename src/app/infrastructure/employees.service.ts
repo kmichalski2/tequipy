@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
-
 
 export interface Equipment {
   id: string;
@@ -18,13 +17,13 @@ export interface Employee {
   equipments: Equipment[];
 }
 
-export interface EmployeeOffboardData {
+export interface OffbaordData {
   receiver: string;
   email: string;
-  phonenumber: string;
+  phoneNumber: string;
   address: string;
   city: string;
-  postalcode: string;
+  postalCode: string;
   country: string;
   notes: string;
 }
@@ -42,10 +41,16 @@ export class EmployeesService {
   }
 
   get(id: string): Observable<Employee> {
-    return this.client.get<Employee>(`${this.url}/${id}`);
+    return this.client.get<Employee>(`${this.url}/${id}`).pipe(
+      catchError((err:  HttpErrorResponse) => {
+          if (err && err.status === 404) {
+            return  throwError(() => new Error('Employee not found'));
+          }
+          return throwError(() => new Error('Something went wrong'));
+    }));
   }
 
-  offboard(id: string, data: EmployeeOffboardData): Observable<any> {
+  offboard(id: string, data: OffbaordData): Observable<any> {
     return this.client.put(`${this.url}/${id}/offboard`, data);
   }
 }

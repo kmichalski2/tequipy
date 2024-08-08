@@ -2,7 +2,7 @@
   <mat-card class="employee-details-card">
     <mat-card-header class="employee-details-card__header">
       <mat-card-title>{{employee.name}}</mat-card-title>
-      <button mat-raised-button color="primary" type="submit">Offboard</button>
+      <button mat-raised-button color="primary" type="button" (click)="onOffboardClick(employee)">Offboard</button>
     </mat-card-header>
     <mat-card-content>
       <div class="row">

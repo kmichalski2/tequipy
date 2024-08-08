@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EmployeeDetailsComponent } from '../employee-details/employee-details.component';
+import { EmployeeDetailsComponent } from '../../components/employee-details/employee-details.component';
 import { RouterLink } from '@angular/router';
 import { MatAnchor } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';

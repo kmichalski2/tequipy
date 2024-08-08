@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
-import { EmployeesTableComponent } from '../employees-table/employees-table.component';
+import { EmployeesTableComponent } from '../../components/employees-table/employees-table.component';
 
 @Component({
   selector: 'app-dashboard-page',

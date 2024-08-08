@@ -1,0 +1,81 @@
+<form [formGroup]="form" novalidate (ngSubmit)="onSubmit($event)">
+  <mat-card class="employee-details-card">
+    <mat-card-header>
+      <mat-card-title>Offbaord</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Receiver" formControlName="receiver">
+            @if (form.controls['receiver'].hasError('required')) {
+              <mat-error>Receiver is <strong>required</strong></mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Email" formControlName="email">
+            @if (form.controls['email'].hasError('required')) {
+              <mat-error>Email is <strong>required</strong></mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Phone number" formControlName="phoneNumber"></textarea>
+            @if (form.controls['phoneNumber'].hasError('phoneNumber')) {
+              <mat-error>Phone Number is <strong>required</strong></mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Address" formControlName="address">
+            @if (form.controls['address'].hasError('required')) {
+              <mat-error>Address is <strong>required</strong></mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="City" formControlName="city">
+            @if (form.controls['city'].hasError('required')) {
+              <mat-error>City is <strong>required</strong></mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #postalCode maxlength="5" placeholder="Postal Code" type="number" formControlName="postalCode">
+            <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Country" type="string" formControlName="country">
+            <mat-error>Country is <strong>required</strong></mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
+      <div class="row">
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Notes" formControlName="notes"></textarea>
+          @if (form.controls['notes'].hasError('required')) {
+            <mat-error>Notes is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
