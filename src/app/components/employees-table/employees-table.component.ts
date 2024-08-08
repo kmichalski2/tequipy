@@ -2,45 +2,63 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
-import { EmployeesTableItem } from './employees-table-datasource';
-import { Employee, EmployeesService } from '../../infrastructure/employees.service';
 import { map } from 'rxjs/operators';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatInput } from '@angular/material/input';
-import { NgIf } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
+import { Observable, of, tap } from 'rxjs';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { EmployeesState } from '../../application/employees.state';
+import { Employee } from '../../domain/employee';
+
+export interface EmployeesTableItem {
+  id: string;
+  name: string;
+  department: string;
+  status: string;
+  email: string;
+  equipment: string;
+}
 
 @Component({
   selector: 'app-employees-table',
   templateUrl: './employees-table.component.html',
   styleUrl: './employees-table.component.scss',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormField, FormsModule, MatInput, MatLabel, NgIf]
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatFormField, FormsModule, MatInput, MatLabel, NgIf, AsyncPipe, MatProgressSpinner, MatProgressBar]
 })
 export class EmployeesTableComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<EmployeesTableItem>;
   dataSource = new MatTableDataSource<EmployeesTableItem>([]);
-  protected data: EmployeesTableItem[] = [];
 
-  constructor(private employeesService: EmployeesService, private router: Router) {
-  }
+  data: EmployeesTableItem[] = [];
+  employees$ = of<EmployeesTableItem[] | null>(null);
+
+  constructor(private employeesState: EmployeesState, private router: Router) {}
 
   displayedColumns = ['name', 'email', 'department', 'equipment', 'status'];
   searchPhrase = '';
 
   ngAfterViewInit(): void {
-    this.employeesService.getAll().pipe(
-      map((employees: Employee[]) => this.mapToEmployeesTableItem(employees))
-    ).subscribe(employees => {
-      this.data = employees;
-      this.dataSource.data = this.data;
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-      this.table.dataSource = this.dataSource;
-    });
+    this.employees$ = this.fetchEmployees();
+  }
+
+  fetchEmployees(): Observable<EmployeesTableItem[]> {
+    return this.employeesState.fetchAll().pipe(
+      map((employees: Employee[]) => this.mapToEmployeesTableItem(employees)),
+      tap((employees: EmployeesTableItem[]) => {
+        this.data = employees;
+        this.dataSource.data = this.data;
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.table.dataSource = this.dataSource;
+      })
+    );
   }
 
   onSearchType($event: KeyboardEvent): void {
@@ -51,7 +69,7 @@ export class EmployeesTableComponent implements AfterViewInit {
     });
   }
 
-  onRowClicked(selectedEmployee: EmployeesTableItem) {
+  onRowClick(selectedEmployee: EmployeesTableItem) {
     this.router.navigate(['/employees', selectedEmployee.id]);
   }
 

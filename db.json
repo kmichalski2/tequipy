@@ -1,22 +1,18 @@
 {
-  "employees": [
+  "offboard": [
     {
-      "id": "vvv1323",
-      "name": "John Doe",
-      "department": "Engineering",
-      "status": "ACTIVE",
-      "email": "some.email@wp.pl",
-      "equipments": [
-        {
-          "id": "aaa123456",
-          "name": "Macbook air"
-        },
-        {
-          "id": "aaa123456",
-          "name": "Magic Mouse"
-        }
-      ]
-    },
+      "id": "fc42",
+      "receiver": "123",
+      "email": "alice.johnson@example.com",
+      "phoneNumber": "12312312",
+      "address": "123213321",
+      "city": "1321321",
+      "postalCode": 231213,
+      "country": "12321",
+      "notes": "132321132"
+    }
+  ],
+  "employees": [
     {
       "id": "vvv1324",
       "name": "Jane Smith",

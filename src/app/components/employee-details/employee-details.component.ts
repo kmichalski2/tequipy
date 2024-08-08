@@ -5,7 +5,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
-import { Employee, EmployeesService } from '../../infrastructure/employees.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, switchMap, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -13,9 +12,11 @@ import { AsyncPipe, NgIf } from '@angular/common';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDivider } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import { OffboardDialogData, OffboardDialogComponent } from '../offboard-dialog/offboard-dialog.component';
+import { OffboardDialogComponent, OffboardDialogData } from '../offboard-dialog/offboard-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { fromPromise } from 'rxjs/internal/observable/innerFrom';
+import { Employee } from '../../domain/employee';
+import { EmployeesState } from '../../application/employees.state';
 
 @Component({
   selector: 'app-employee-details',
@@ -37,9 +38,8 @@ import { fromPromise } from 'rxjs/internal/observable/innerFrom';
   ]
 })
 export class EmployeeDetailsComponent {
-  constructor(private employeesService: EmployeesService, private router: Router, private route: ActivatedRoute, private snackbar: MatSnackBar, private dialog: MatDialog) {
+  constructor(private employeesState: EmployeesState, private router: Router, private route: ActivatedRoute, private snackbar: MatSnackBar, private dialog: MatDialog) {
   }
-
   employee$: Observable<Employee | null> = this.fetchEmployee();
 
   fetchEmployee(): Observable<Employee | null> {
@@ -49,10 +49,10 @@ export class EmployeeDetailsComponent {
         if (!id || id === 'null' || id === 'undefined') {
           return throwError(() => new Error('Employee ID has not been provided'));
         }
-        return this.employeesService.get(id);
+        return this.employeesState.fetch(id);
       }),
       catchError((err: Error) => {
-        this.snackbar.open(err.message, 'Close' , { duration: 5000 });
+        this.snackbar.open(err.message, 'Close', {duration: 5000});
         return fromPromise(this.router.navigate(['/employees'])).pipe(map(() => null));
       })
     );

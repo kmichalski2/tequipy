@@ -2,31 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
-
-export interface Equipment {
-  id: string;
-  name: string;
-}
-
-export interface Employee {
-  id: string;
-  name: string;
-  department: string;
-  status: string;
-  email: string;
-  equipments: Equipment[];
-}
-
-export interface OffbaordData {
-  receiver: string;
-  email: string;
-  phoneNumber: string;
-  address: string;
-  city: string;
-  postalCode: string;
-  country: string;
-  notes: string;
-}
+import { Employee, OffbaordData } from '../domain/employee';
 
 @Injectable({
   providedIn: 'root'
@@ -51,6 +27,6 @@ export class EmployeesService {
   }
 
   offboard(id: string, data: OffbaordData): Observable<any> {
-    return this.client.put(`${this.url}/${id}/offboard`, data);
+    return this.client.post(`${environment.apiUrl}/offboard`, data);
   }
 }
